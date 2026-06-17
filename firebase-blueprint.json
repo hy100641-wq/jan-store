@@ -1,0 +1,149 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Luxury streetwear product catalog item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "type": { "type": "string" },
+        "images": { "type": "array" },
+        "sizes": { "type": "array" },
+        "colors": { "type": "array" },
+        "stock": { "type": "number" },
+        "featured": { "type": "boolean" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["name", "price", "description", "category", "type", "images", "sizes", "colors", "stock", "featured", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order transaction info with items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "items": { "type": "array" },
+        "total": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentScreenshot": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["name", "phone", "address", "items", "total", "paymentMethod", "paymentScreenshot", "status", "createdAt"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "Aggregated customer checkout metrics and information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "ordersCount": { "type": "number" },
+        "totalSpent": { "type": "number" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["name", "phone", "address", "ordersCount", "totalSpent", "createdAt"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "User submit contact form messages feedbacks",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["name", "phone", "message", "createdAt"]
+    },
+    "HomepageConfig": {
+      "title": "HomepageConfig",
+      "description": "Dynamic homepage component customization preferences",
+      "type": "object",
+      "properties": {
+        "heroTitle": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "heroBannerImg": { "type": "string" },
+        "heroPromoText": { "type": "string" },
+        "aboutText": { "type": "string" },
+        "aboutImage": { "type": "string" },
+        "instaLink": { "type": "string" },
+        "tiktokLink": { "type": "string" },
+        "facebookLink": { "type": "string" },
+        "whatsAppLink": { "type": "string" },
+        "animationEnabled": { "type": "boolean" },
+        "announcementText": { "type": "string" }
+      },
+      "required": ["heroTitle", "heroSubtitle", "heroBannerImg", "heroPromoText", "aboutText", "aboutImage", "instaLink", "tiktokLink", "facebookLink", "whatsAppLink", "animationEnabled", "announcementText"]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Discount coupons information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "discountType": { "type": "string" },
+        "discountValue": { "type": "number" },
+        "expiryDate": { "type": "string" },
+        "isActive": { "type": "boolean" }
+      },
+      "required": ["discountType", "discountValue", "isActive"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Product customer feedback reviews",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "productId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["productId", "customerName", "rating", "comment", "createdAt"]
+    }
+  },
+  "firestore": {
+    "products/{productId}": {
+      "schema": "Product",
+      "description": "Catalog of products"
+    },
+    "orders/{orderId}": {
+      "schema": "Order",
+      "description": "Placed orders collection"
+    },
+    "customers/{customerId}": {
+      "schema": "Customer",
+      "description": "Customers telemetry profile collection"
+    },
+    "messages/{messageId}": {
+      "schema": "Message",
+      "description": "Contact messages feedbacks"
+    },
+    "config/{configId}": {
+      "schema": "HomepageConfig",
+      "description": "Homepage dynamic settings config"
+    },
+    "coupons/{couponId}": {
+      "schema": "Coupon",
+      "description": "Active discount coupons"
+    },
+    "reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "User feedback reviews"
+    }
+  }
+}
